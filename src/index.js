@@ -1,12 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from "react-dom/client";
 import './index.css';
 
 class Square extends React.Component {
     render() {
         return (
             <button className="square">
-                {/* TODO */}
+                {this.props.value}
             </button>
         );
     }
@@ -14,7 +14,7 @@ class Square extends React.Component {
 
 class Board extends React.Component {
     renderSquare(i) {
-        return <Square />;
+        return <Square value={i} />;
     }
 
     render() {
@@ -59,8 +59,10 @@ class Game extends React.Component {
     }
 }
 
-ReactDOM.render(
-    <Game />,
-    document.getElementById('root')
+const container = document.getElementById('root');
+const root = createRoot(container);
+
+root.render(
+    <Game />
 );
 
